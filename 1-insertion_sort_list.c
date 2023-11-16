@@ -12,7 +12,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *curr = (*list)->next;
 
-	if (list == NULL || (*list) == NULL)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
 	while (curr)
@@ -27,7 +27,7 @@ void insertion_sort_list(listint_t **list)
 }
 
 /**
- * swap - swaps a node with its previous
+ * swap - swaps a two nodes in a doubly linked list
  *
  * @node: given node
  * @list: pointer to pointer to doubly linked list
@@ -36,21 +36,25 @@ void insertion_sort_list(listint_t **list)
 */
 listint_t *swap(listint_t *node, listint_t **list)
 {
-	listint_t *prev = node->prev, *curr = node;
+	listint_t *prev_node = node->prev, *next_node = node->next;
 
-	prev->next = curr->next;
+	/* if prev is not null */
+	if (prev_node)
+		prev_node->next = next_node;
 
-	if (curr->next)
-		curr->next->prev = prev;
+	/* if next is not null */
+	if (next_node)
+		next_node->prev = prev_node;
 
-	curr->next = prev;
-	curr->prev = prev->prev;
-	prev->prev = curr;
+	node->prev = prev_node->prev;
+	node->next = prev_node;
 
-	if (curr->prev)
-		curr->prev->next = curr;
+	if (node->prev)
+		node->prev->next = node;
 	else
-		*list = curr;
+		*list = node;
 
-	return (curr);
+	prev_node->prev = node;
+
+	return (node);
 }

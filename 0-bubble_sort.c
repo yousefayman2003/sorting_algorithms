@@ -1,5 +1,6 @@
 #include "sort.h"
 
+void swap(int *number1, int *number2);
 
 /**
  * bubble_sort - sorts a given array in ascending order

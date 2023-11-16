@@ -12,50 +12,25 @@ void swap(int *number1, int *number2);
 */
 void selection_sort(int *array, size_t size)
 {
-	int min, index;
-	size_t i;
+	size_t i, j, index;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
-		min = array[i];
+		index = i;
 		/* get the minimum element index */
-		index = get_min(array, size, min, i);
-		min = array[index];
+		for (j = i + 1; j < size; j++)
+		{
+			if (array[index] > array[j])
+				index = j;
+		}
 
 		/* if the curr element is not the min swap */
-		if (array[i] != min)
+		if (i != index)
 		{
 			swap(&array[i], &array[index]);
 			print_array(array, size);
 		}
 	}
-}
-
-/**
- * get_min - get the minimum element index from an array starting
- *		given index
- *
- * @array: given array
- * @size: size of the array
- * @min: current min element
- * @index: index to start searching from
- *
- * Return: min element starting from given index
-*/
-int get_min(int *array, int size, int min, size_t index)
-{
-	int j;
-
-	for (j = index + 1; j < size; j++)
-	{
-		if (min > array[j])
-		{
-			min = array[j];
-			index = j;
-		}
-	}
-
-	return (index);
 }
 
 /**
