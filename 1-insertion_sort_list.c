@@ -10,11 +10,12 @@ listint_t *swap(listint_t *node, listint_t **list);
 */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curr = (*list)->next;
+	listint_t *curr;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
+	curr = (*list)->next;
 	while (curr)
 	{
 		while ((curr->prev) && (curr->n < curr->prev->n))
