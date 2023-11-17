@@ -49,26 +49,26 @@ void quick_sort_recursion(int *array, int low, int high, size_t size)
 */
 int partition(int *array, int low, int high, size_t size)
 {
-	int j, i = low, pivot = array[high];
+	int j, i = low - 1, pivot = array[high];
 
 	for (j = low; j < high; j++)
 	{
-		if (array[j] < pivot)
+		if (array[j] <= pivot)
 		{
+			i++;
 			swap(&array[j], &array[i]);
 			if (i != j)
 				print_array(array, size);
-			i++;
 		}
 	}
 
-	if (array[i] != pivot)
+	if ((i + 1) != high)
 	{
-		swap(&array[i], &array[high]);
+		swap(&array[i + 1], &array[high]);
 		print_array(array, size);
 	}
 
-	return (i);
+	return (i + 1);
 
 }
 
