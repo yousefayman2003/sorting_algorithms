@@ -1,6 +1,5 @@
 #include "sort.h"
 
-
 /* function declaretion */
 void swap(int *number1, int *number2);
 int partition(int *array, int low, int high, size_t size);
