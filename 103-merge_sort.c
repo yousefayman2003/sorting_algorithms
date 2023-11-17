@@ -61,7 +61,7 @@ void merge(int *array, int low, int mid, int high)
 
 	/* fill temp2 */
 	for (j = 0; j < right_size; j++)
-		temp[left_size + j] = array[mid + 1 + j]
+		temp[left_size + j] = array[mid + 1 + j];
 
 	/* merge two sorted arrays */
 	i = 0, j = 0, k = low;
